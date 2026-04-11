@@ -1,0 +1,102 @@
+{
+  "tree": {
+    "allClients": "Все клиенты",
+    "noClients": "Нет клиентов",
+    "id": "ID",
+    "agentCount": "Количество агентов"
+  },
+  "contextMenu": {
+    "edit": "Изменить",
+    "delete": "Удалить",
+    "addSite": "Добавить сайт",
+    "enableMaintenanceMode": "Включить режим обслуживания",
+    "disableMaintenanceMode": "Выключить режим обслуживания",
+    "installAgent": "Установить агента",
+    "assignAutomationPolicy": "Назначить политику автоматизации",
+    "assignAlertTemplate": "Назначить шаблон оповещения",
+    "runUrlAction": "Запустить URL-действие",
+    "runChecks": "Запустить проверки",
+    "reporting": "Отчетность",
+    "close": "Закрыть"
+  },
+  "tabs": {
+    "servers": "Серверы",
+    "workstations": "Рабочие станции",
+    "mixed": "Смешанный"
+  },
+  "filters": {
+    "search": "Поиск",
+    "title": "Фильтр таблицы агентов",
+    "checksFailing": "Есть сбойные проверки",
+    "patchesPending": "Есть ожидающие патчи",
+    "actionsPending": "Есть ожидающие действия",
+    "rebootNeeded": "Требуется перезагрузка",
+    "availability": "Доступность",
+    "showAllAgents": "Показать всех агентов",
+    "showOnlineOnly": "Показать только онлайн",
+    "showOfflineOnly": "Показать только офлайн",
+    "showOverdueOnly": "Показать только просроченные",
+    "showOffline30Days": "Показать офлайн более 30 дней"
+  },
+  "table": {
+    "client": "Клиент",
+    "site": "Сайт",
+    "hostname": "Имя хоста",
+    "description": "Описание",
+    "user": "Пользователь",
+    "lastResponse": "Последний ответ",
+    "bootTime": "Время загрузки"
+  },
+  "dialog": {
+    "deleteTitle": "Вы уверены?",
+    "deleteTarget": "Удалить {type}: {name}."
+  },
+  "notify": {
+    "noUrlActions": "URL-действия не настроены. Перейдите в Настройки > Глобальные настройки > URL-действия"
+  },
+  "agentTable": {
+    "noAgents": "Нет агентов",
+    "checksStatus": "Статус проверок",
+    "patchesPending": "Ожидающие патчи",
+    "pendingActions": "Ожидающие действия",
+    "agentStatus": "Статус агента",
+    "reboot": "Перезагрузка",
+    "settingOverriddenByTemplate": "Параметр переопределен шаблоном оповещений: {name}",
+    "platform": {
+      "windows": "Microsoft Windows",
+      "linux": "Linux",
+      "macos": "macOS"
+    },
+    "monitoringType": {
+      "server": "Сервер",
+      "workstation": "Рабочая станция"
+    },
+    "status": {
+      "maintenanceModeEnabled": "Режим обслуживания включен",
+      "checksFailing": "Есть сбойные проверки",
+      "checksWarning": "Есть предупреждения по проверкам",
+      "checksInfo": "Есть информационные проверки",
+      "checksPassing": "Проверки в норме",
+      "rebootRequired": "Требуется перезагрузка",
+      "agentOverdue": "Агент просрочен",
+      "agentOffline": "Агент офлайн",
+      "agentOnline": "Агент онлайн"
+    },
+    "pendingActionCount": "Ожидающих действий: {count}",
+    "alerts": {
+      "dashboardOverdue": "Показывать оповещение на панели при просрочке агента",
+      "emailOverdue": "Отправлять email-оповещение при просрочке агента",
+      "smsOverdue": "Отправлять SMS-оповещение при просрочке агента",
+      "category": {
+        "email": "Email",
+        "text": "SMS",
+        "dashboard": "Панель"
+      },
+      "action": {
+        "enabled": "включены",
+        "disabled": "выключены"
+      },
+      "updated": "Оповещения типа «{category}» теперь {action}, когда агент {hostname} просрочен."
+    }
+  }
+}

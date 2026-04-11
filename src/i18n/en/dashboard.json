@@ -1,0 +1,102 @@
+{
+  "tree": {
+    "allClients": "All Clients",
+    "noClients": "No Clients",
+    "id": "ID",
+    "agentCount": "Agent Count"
+  },
+  "contextMenu": {
+    "edit": "Edit",
+    "delete": "Delete",
+    "addSite": "Add Site",
+    "enableMaintenanceMode": "Enable Maintenance Mode",
+    "disableMaintenanceMode": "Disable Maintenance Mode",
+    "installAgent": "Install Agent",
+    "assignAutomationPolicy": "Assign Automation Policy",
+    "assignAlertTemplate": "Assign Alert Template",
+    "runUrlAction": "Run URL Action",
+    "runChecks": "Run Checks",
+    "reporting": "Reporting",
+    "close": "Close"
+  },
+  "tabs": {
+    "servers": "Servers",
+    "workstations": "Workstations",
+    "mixed": "Mixed"
+  },
+  "filters": {
+    "search": "Search",
+    "title": "Filter Agent Table",
+    "checksFailing": "Checks Failing",
+    "patchesPending": "Patches Pending",
+    "actionsPending": "Actions Pending",
+    "rebootNeeded": "Reboot Needed",
+    "availability": "Availability",
+    "showAllAgents": "Show All Agents",
+    "showOnlineOnly": "Show Online Only",
+    "showOfflineOnly": "Show Offline Only",
+    "showOverdueOnly": "Show Overdue Only",
+    "showOffline30Days": "Show Offline for over 30 days"
+  },
+  "table": {
+    "client": "Client",
+    "site": "Site",
+    "hostname": "Hostname",
+    "description": "Description",
+    "user": "User",
+    "lastResponse": "Last Response",
+    "bootTime": "Boot Time"
+  },
+  "dialog": {
+    "deleteTitle": "Are you sure?",
+    "deleteTarget": "Delete {type}: {name}."
+  },
+  "notify": {
+    "noUrlActions": "No URL Actions configured. Go to Settings > Global Settings > URL Actions"
+  },
+  "agentTable": {
+    "noAgents": "No Agents",
+    "checksStatus": "Checks Status",
+    "patchesPending": "Patches Pending",
+    "pendingActions": "Pending Actions",
+    "agentStatus": "Agent Status",
+    "reboot": "Reboot",
+    "settingOverriddenByTemplate": "Setting is overridden by alert template: {name}",
+    "platform": {
+      "windows": "Microsoft Windows",
+      "linux": "Linux",
+      "macos": "macOS"
+    },
+    "monitoringType": {
+      "server": "Server",
+      "workstation": "Workstation"
+    },
+    "status": {
+      "maintenanceModeEnabled": "Maintenance Mode Enabled",
+      "checksFailing": "Checks failing",
+      "checksWarning": "Checks warning",
+      "checksInfo": "Checks info",
+      "checksPassing": "Checks passing",
+      "rebootRequired": "Reboot required",
+      "agentOverdue": "Agent overdue",
+      "agentOffline": "Agent offline",
+      "agentOnline": "Agent online"
+    },
+    "pendingActionCount": "Pending Action Count: {count}",
+    "alerts": {
+      "dashboardOverdue": "Show a dashboard alert when agent is overdue",
+      "emailOverdue": "Send an email alert when agent is overdue",
+      "smsOverdue": "Send an SMS alert when agent is overdue",
+      "category": {
+        "email": "Email",
+        "text": "SMS",
+        "dashboard": "Dashboard"
+      },
+      "action": {
+        "enabled": "enabled",
+        "disabled": "disabled"
+      },
+      "updated": "{category} alerts will now be {action} when {hostname} is overdue."
+    }
+  }
+}

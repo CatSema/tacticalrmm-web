@@ -1,0 +1,56 @@
+/home/catsema/Projects/Work/tacticalrmm-web/src/views/RemoteBackground.vue	${data.hostname} - ${data.client} - ${data.site} | Remote Background
+/home/catsema/Projects/Work/tacticalrmm-web/src/views/TakeControl.vue	${data.hostname} - ${data.client} - ${data.site} | Take Control
+/home/catsema/Projects/Work/tacticalrmm-web/src/views/WebVNC.vue	${data.hostname} - ${data.client} - ${data.site} | VNC
+/home/catsema/Projects/Work/tacticalrmm-web/src/layouts/MainLayout.vue	v{{ latestTRMMVersion }} available
+/home/catsema/Projects/Work/tacticalrmm-web/src/layouts/MainLayout.vue	SSL certificate expires in {{ daysUntilCertExpires }} days
+/home/catsema/Projects/Work/tacticalrmm-web/src/layouts/MainLayout.vue	Total: {{ serverCount }}
+/home/catsema/Projects/Work/tacticalrmm-web/src/layouts/MainLayout.vue	Offline: {{ serverOfflineCount }}
+/home/catsema/Projects/Work/tacticalrmm-web/src/layouts/MainLayout.vue	Total: {{ workstationCount }}
+/home/catsema/Projects/Work/tacticalrmm-web/src/layouts/MainLayout.vue	Offline: {{ workstationOfflineCount }}
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/AdminManager.vue	Delete user ${user.username}?
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/AdminManager.vue	Reset 2FA for ${user.username}?
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/AlertsIcon.vue	View All Alerts ({{ alertsCount }})
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/AlertsManager.vue	Delete alert template ${template.name}?
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/accounts/PermissionsManager.vue	Delete role ${role.name}?
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/accounts/UserSessionsTable.vue	Disconnect session for ${token.user}?
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/accounts/UserSessionsTable.vue	Disconnect all sessions for ${props.user.username}?
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/agents/AgentActionMenu.vue	Edit {{ agent.hostname }}
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/agents/AgentActionMenu.vue	Reboot ${agent.hostname} now
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/agents/AutomatedTasksTab.vue	Delete ${task.name} task
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/agents/AutomatedTasksTab.vue	Run ${task.name} task
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/agents/ChecksTab.vue	Delete ${check.readable_desc}
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/agents/SummaryTab.vue	Public IP: {{ summary.public_ip }}
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/agents/SummaryTab.vue	LAN IP: {{ summary.local_ips }}
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/automation/PolicyAutomatedTasksTab.vue	Run ${task.name} task
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/automation/PolicyAutomatedTasksTab.vue	Delete ${task.name} task
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/automation/PolicyChecksTab.vue	${alert_type} alerts ${act}
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/automation/PolicyChecksTab.vue	Delete ${check.check_type} check?
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/automation/modals/PolicyAdd.vue	This {{ type }} will not inherit from higher policies
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/clients/ClientsManager.vue	Show Sites ({{ props.row.sites.length }})
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/clients/ClientsManager.vue	Delete client: ${client.name}.
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/clients/DeleteClient.vue	Deleting ${props.type} ${props.object.name}. ${props.object.agent_count} agents will be moved to the selected site
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/clients/SitesTable.vue	Delete site: ${site.name}.
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/core/APIKeysTable.vue	Delete API key: ${key.name}?
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/modals/agents/EditAgent.vue	Edit {{ agent.hostname }}
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/modals/agents/RebootLater.vue	A reboot has been scheduled for ${ret.time} on ${props.agent.hostname}. It can be cancelled from the Pending Actions menu until the scheduled time.
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/modals/alerts/AlertsOverview.vue	${alert.alert_type} failure action results
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/modals/alerts/AlertsOverview.vue	${alert.alert_type} resolved action results
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/modals/coresettings/CustomFieldsTable.vue	ID: {{ props.row.id }}
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/modals/coresettings/CustomFieldsTable.vue	Delete custom field ${field.name}?
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/modals/coresettings/KeyStoreTable.vue	Delete key: ${key.name}?
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/modals/coresettings/URLActionsTable.vue	Delete URL Action: ${action.name}?
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/scripts/ScriptManager.vue	ID: {{ props.row.id }}
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/scripts/ScriptManager.vue	Delete script: ${script.name}?
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/scripts/ScriptSnippets.vue	Delete script snippet: ${snippet.name}?
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/software/InstallSoftware.vue	Install ${name}?
+/home/catsema/Projects/Work/tacticalrmm-web/src/components/software/UninstallSoftware.vue	Uninstalling {{ softwareName }}
+/home/catsema/Projects/Work/tacticalrmm-web/src/core/settings/components/ScheduleTable.vue	Are you sure you want to delete schedule: ${schedule.name}?
+/home/catsema/Projects/Work/tacticalrmm-web/src/ee/reporting/components/ReportAssets.vue	Enter a new ${node.type} name
+/home/catsema/Projects/Work/tacticalrmm-web/src/ee/reporting/components/ReportDataQueryTable.vue	Delete Data Query: ${dataQuery.name}?
+/home/catsema/Projects/Work/tacticalrmm-web/src/ee/reporting/components/ReportHTMLTemplateTable.vue	Delete HTML Template: ${template.name}?
+/home/catsema/Projects/Work/tacticalrmm-web/src/ee/reporting/components/ReportHistoryTable.vue	Delete History for ${entry.report_template_name}?
+/home/catsema/Projects/Work/tacticalrmm-web/src/ee/reporting/components/ReportScheduleForm.vue	Default timezone ${settings?.default_time_zone} will be used if blank
+/home/catsema/Projects/Work/tacticalrmm-web/src/ee/reporting/components/ReportScheduleTable.vue	Delete Schedule ${schedule.name}?
+/home/catsema/Projects/Work/tacticalrmm-web/src/ee/reporting/components/ReportsManager.vue	Delete template: ${template.name}?
+/home/catsema/Projects/Work/tacticalrmm-web/src/ee/sso/components/SSOAccountsTable.vue	Disconnect social account: ${account.display}?
+/home/catsema/Projects/Work/tacticalrmm-web/src/ee/sso/components/SSOProvidersTable.vue	Delete SSO Provider: ${provider.name}?

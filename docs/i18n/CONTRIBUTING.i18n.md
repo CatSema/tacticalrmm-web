@@ -244,3 +244,55 @@ If any check fails, the merge is blocked.
 ## What If a String Seems "Technical"?
 
 When in doubt — leave it in English and add a comment in the PR explaining why.
+
+---
+
+## Adding a New Language
+
+Locales are discovered automatically from `src/i18n/<code>/index.ts`.
+Each locale controls what it imports — **partial translations are fully supported**.
+Missing domains fall back to `en` automatically via `fallbackLocale`.
+
+### Step 1: Create the locale directory and index
+
+```
+src/i18n/de/index.ts
+```
+
+```ts
+// src/i18n/de/index.ts
+// Import only translated domains — the rest falls back to English.
+import auth from "./auth.json";
+import common from "./common.json";
+
+export default {
+  auth,
+  common,
+};
+```
+
+### Step 2: Add the locale name
+
+Edit `src/i18n/index.ts` and add an entry to `localeNames`:
+
+```ts
+const localeNames: Record<string, string> = {
+  en: "English",
+  it: "Italiano",
+  ru: "Русский",
+  de: "Deutsch",  // ← add here
+};
+```
+
+### Step 3: Add translation files
+
+```
+src/i18n/de/auth.json
+src/i18n/de/common.json
+```
+
+### That's it
+
+- The language automatically appears in the locale picker.
+- `npm run i18n:check` will report coverage for the new locale.
+- No other files need changes — `supportedLocales`, `messages`, and aliases are all auto-generated.

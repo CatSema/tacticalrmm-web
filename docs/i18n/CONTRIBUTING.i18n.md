@@ -39,9 +39,9 @@ import { i18n } from "@/i18n";
 Notify.create({ message: i18n.global.t("common.saved") });
 ```
 
-### 2. Add the key to both `en` and `ru`
+### 2. Add the key to the source locale (`en`)
 
-Both locale files **must** be updated simultaneously:
+`en` is the source of truth. Add the key there first:
 
 ```json
 // src/i18n/en/agents.json
@@ -53,15 +53,8 @@ Both locale files **must** be updated simultaneously:
 }
 ```
 
-```json
-// src/i18n/ru/agents.json
-{
-  "actions": {
-    "delete": "Удалить агента",
-    "deleted": "Агент успешно удалён"
-  }
-}
-```
+Then add translations in any locale that you are working on (for example `ru`).
+If a key is missing in a locale, fallback to `en` is used.
 
 ### 3. Run the integrity check
 
@@ -69,17 +62,17 @@ Both locale files **must** be updated simultaneously:
 npm run i18n:check
 ```
 
-This verifies:
+This reports:
 
-- **Key parity** — every `en` key exists in `ru` and vice versa.
-- **Placeholder consistency** — `{var}`, `%s`, `%d` etc. match between locales.
+- **Key parity** — missing/extra keys in each locale vs `en`.
+- **Placeholder consistency** — `{var}`, `%s`, `%d` etc. match for shared keys.
 
 ### 4. Commit
 
 Follow the conventional commit format:
 
 ```
-i18n: localize <module> to ru and align key parity
+i18n: localize <module> for <locale> and align key parity
 ```
 
 ---
@@ -125,7 +118,7 @@ Preserve placeholders **exactly as they appear** in the English source:
 // en
 "greeting": "Hello, {name}! You have %d messages."
 
-// ru — same placeholders, translated text
+// target locale (example: ru) — same placeholders, translated text
 "greeting": "Привет, {name}! У вас %d сообщений."
 ```
 
@@ -143,7 +136,7 @@ Use `vue-i18n` pipe syntax for plural forms:
 }
 ```
 
-For Russian, use 4 forms (0, 1, 2-4, 5+):
+For locales with complex plural rules (example: Russian), use full form sets (0, 1, 2-4, 5+):
 
 ```json
 {
@@ -184,7 +177,7 @@ For Russian, use 4 forms (0, 1, 2-4, 5+):
 
 ---
 
-## Glossary
+## Glossary (Example: RU)
 
 Use consistent terminology across all modules.
 
@@ -211,11 +204,11 @@ Use consistent terminology across all modules.
 
 ## Quality Checklist Before Merge
 
-1. [ ] No missing keys in `ru`.
-2. [ ] No extra keys removed from `en`.
-3. [ ] Placeholders and tokens match between `en` and `ru`.
+1. [ ] New key exists in `en`.
+2. [ ] If locale key exists, placeholders/tokens match `en`.
+3. [ ] No accidental edits/removals in `en`.
 4. [ ] Terms follow the glossary above.
-5. [ ] UI is visually readable on RU (no text overflow in buttons, dialogs, tooltips).
+5. [ ] UI is visually readable for the target locale (no text overflow in buttons, dialogs, tooltips).
 6. [ ] `npm run i18n:check` passes.
 7. [ ] `npm run lint` and `npm run build` pass.
 
@@ -226,19 +219,19 @@ Use consistent terminology across all modules.
 Every push / PR to `develop` automatically runs:
 
 1. **Lint + Build** — `frontend-linting.yml`
-2. **i18n parity + placeholders** — `npm run i18n:check`
+2. **i18n parity + placeholders (informational)** — `npm run i18n:check`
 
-If any check fails, the merge is blocked.
+`i18n:check` is non-blocking by design (coverage/progress signal).
 
 ---
 
 ## Available npm Scripts
 
-| Script                      | Purpose                                |
-| --------------------------- | -------------------------------------- |
-| `npm run i18n:check`        | Run all i18n integrity checks          |
-| `npm run i18n:parity`       | Check key parity between `en` and `ru` |
-| `npm run i18n:placeholders` | Check placeholder consistency          |
+| Script                      | Purpose                                            |
+| --------------------------- | -------------------------------------------------- |
+| `npm run i18n:check`        | Run all i18n integrity checks                      |
+| `npm run i18n:parity`       | Check key parity between `en` and non-`en` locales |
+| `npm run i18n:placeholders` | Check placeholder consistency                      |
 
 ---
 
@@ -254,36 +247,22 @@ Locales are discovered automatically from `src/i18n/<code>/index.ts`.
 Each locale controls what it imports — **partial translations are fully supported**.
 Missing domains fall back to `en` automatically via `fallbackLocale`.
 
-### Step 1: Create the locale directory and index
+### Step 1: Create the locale directory and JSON domains
 
 ```
-src/i18n/de/index.ts
+src/i18n/de/common.json
 ```
 
-```ts
-// src/i18n/de/index.ts
-// Import only translated domains — the rest falls back to English.
-import auth from "./auth.json";
-import common from "./common.json";
+You can add only the domains you have translated.
 
-export default {
-  auth,
-  common,
-};
-```
+### Step 2: Register locale in app runtime
 
-### Step 2: Add the locale name
+Edit `src/i18n/index.ts` and add locale to:
 
-Edit `src/i18n/index.ts` and add an entry to `localeNames`:
-
-```ts
-const localeNames: Record<string, string> = {
-  en: "English",
-  it: "Italiano",
-  ru: "Русский",
-  de: "Deutsch", // ← add here
-};
-```
+- `supportedLocales`
+- `localeAliases`
+- `messages`
+- `quasarLanguagePacks`
 
 ### Step 3: Add translation files
 
@@ -294,6 +273,6 @@ src/i18n/de/common.json
 
 ### That's it
 
-- The language automatically appears in the locale picker.
+- Add language label to the locale picker options (if shown in UI).
 - `npm run i18n:check` will report coverage for the new locale.
-- No other files need changes — `supportedLocales`, `messages`, and aliases are all auto-generated.
+- Missing keys automatically fall back to `en`.

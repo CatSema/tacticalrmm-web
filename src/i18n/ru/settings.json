@@ -325,6 +325,9 @@
       "workstations": "Рабочие станции",
       "mixed": "Смешанный"
     },
+    "languageOptions": {
+      "system": "Системный (авто)"
+    },
     "notify": {
       "noUrlActions": "URL Actions не настроены. Перейдите в Настройки > Глобальные настройки > URL Actions",
       "selectUrlAction": "Выберите URL Action",

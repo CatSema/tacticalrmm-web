@@ -292,7 +292,13 @@
 
 <script>
 import { openURL } from "quasar";
-import { setLocale, normalizeLocale, locales } from "@/i18n";
+import {
+  setLocale,
+  locales,
+  getLocalePreference,
+  setLocalePreference,
+  resolveSystemLocale,
+} from "@/i18n";
 import { loadingBarColors } from "@/mixins/data";
 import mixins from "@/mixins/mixins";
 
@@ -306,7 +312,7 @@ export default {
       agentDblClickAction: "",
       defaultAgentTblTab: "",
       clientTreeSort: "",
-      locale: "en",
+      locale: "system",
       localeFieldKey: null,
       url_action: null,
       tab: "ui",
@@ -374,7 +380,13 @@ export default {
           value: "mixed",
         },
       ],
-      localeOptions: locales,
+      localeOptions: [
+        {
+          label: this.$t("settings.userPreferences.languageOptions.system"),
+          value: "system",
+        },
+        ...locales,
+      ],
     };
   },
   watch: {
@@ -410,13 +422,7 @@ export default {
         this.localeFieldKey = ["locale", "language", "lang", "ui_locale"].find(
           (key) => key in r.data,
         );
-        const profileLocale = normalizeLocale(
-          this.localeFieldKey ? r.data[this.localeFieldKey] : null,
-        );
-        this.locale =
-          profileLocale ||
-          normalizeLocale(localStorage.getItem("ui_locale")) ||
-          "en";
+        this.locale = getLocalePreference();
         this.agentDblClickAction = r.data.dbl_click_action;
         this.url_action = r.data.url_action;
         this.defaultAgentTblTab = r.data.default_agent_tbl_tab;
@@ -454,11 +460,19 @@ export default {
         date_format: this.date_format,
       };
       if (this.localeFieldKey) {
-        data[this.localeFieldKey] = this.locale;
+        data[this.localeFieldKey] =
+          this.locale === "system" ? resolveSystemLocale() : this.locale;
       }
 
       this.$axios.patch("/accounts/users/ui/", data).then(async () => {
-        await setLocale(this.locale);
+        if (this.locale === "system") {
+          setLocalePreference("system");
+          await setLocale(resolveSystemLocale(), { persist: false });
+          localStorage.removeItem("ui_locale");
+        } else {
+          setLocalePreference(this.locale);
+          await setLocale(this.locale, { persist: true });
+        }
         this.notifySuccess(this.$t("settings.userPreferences.notify.saved"));
         this.$store.dispatch("loadTree");
         this.onOk();

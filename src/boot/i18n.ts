@@ -4,5 +4,5 @@ import { i18n, resolveInitialLocale, setLocale } from "@/i18n";
 
 export default boot(async ({ app }) => {
   app.use(i18n);
-  await setLocale(resolveInitialLocale());
+  await setLocale(resolveInitialLocale(), { persist: false });
 });

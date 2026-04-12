@@ -34,5 +34,13 @@
   "dialog": {
     "reset2faTitle": "Сброс 2FA",
     "reset2faMessage": "Подтвердите сброс токена 2FA."
+  },
+  "webTerminal": {
+    "featureDisabled": "Функция отключена. Ее можно включить в глобальных настройках."
+  },
+  "notFound": {
+    "message": "Извините, здесь ничего нет...",
+    "code": "(404)",
+    "goBack": "Вернуться"
   }
 }

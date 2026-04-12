@@ -34,5 +34,13 @@
   "dialog": {
     "reset2faTitle": "Reset 2FA",
     "reset2faMessage": "Are you sure you would like to reset your 2FA token?"
+  },
+  "webTerminal": {
+    "featureDisabled": "This feature is disabled. It can be enabled in Global Settings."
+  },
+  "notFound": {
+    "message": "Sorry, nothing here...",
+    "code": "(404)",
+    "goBack": "Go back"
   }
 }

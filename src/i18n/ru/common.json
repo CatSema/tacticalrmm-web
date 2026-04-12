@@ -32,9 +32,25 @@
     "submit": "Отправить"
   },
   "system": {
+    "datetimeAt": "{date} в {time}",
     "no": "Нет",
     "notAvailable": "Н/Д",
+    "unassigned": "Без категории",
     "unknown": "Неизвестно",
     "yes": "Да"
+  },
+  "timeLapse": {
+    "secondsAgo": "{count} секунд назад",
+    "minutesAgo": "{count} минут назад",
+    "hoursAgo": "{count} часов назад",
+    "daysAgo": "{count} дней назад",
+    "monthsAgo": "{count} месяцев назад",
+    "yearsAgo": "{count} лет назад"
+  },
+  "messages": {
+    "copiedToClipboard": "Скопировано в буфер обмена"
+  },
+  "csv": {
+    "browserDeniedDownload": "Браузер запретил загрузку файла..."
   }
 }

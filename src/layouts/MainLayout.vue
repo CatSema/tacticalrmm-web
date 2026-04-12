@@ -339,7 +339,10 @@ async function openWebTerm() {
   try {
     const { message, status } = await checkWebTermPerms();
     if (status === 412) {
-      notifyError(message);
+      const backendMessage = typeof message === "string" ? message.trim() : "";
+      notifyError(
+        backendMessage || t("navigation.webTerminal.featureDisabled"),
+      );
     } else {
       openWebTerminal();
     }

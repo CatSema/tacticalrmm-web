@@ -61,7 +61,7 @@
                 dense
                 size="sm"
                 color="primary"
-                label="Load More"
+                :label="$t('agents.registryManager.loadMore')"
                 class="q-px-xs q-py-xs fontt-weight-medium"
                 :loading="
                   loadingMoreNodes[getParentIdFromLoadNode(prop.node.id)]
@@ -77,7 +77,9 @@
             >
               <q-list dense style="min-width: 180px">
                 <q-item clickable style="padding-right: 4px !important">
-                  <q-item-section>New</q-item-section>
+                  <q-item-section>{{
+                    $t("agents.registryManager.new")
+                  }}</q-item-section>
                   <q-item-section side>
                     <q-icon name="chevron_right" />
                   </q-item-section>
@@ -109,13 +111,19 @@
                   v-close-popup
                   @click="refreshNode(prop.node.id)"
                 >
-                  <q-item-section>Refresh</q-item-section>
+                  <q-item-section>{{
+                    $t("common.actions.refresh")
+                  }}</q-item-section>
                 </q-item>
                 <q-item clickable v-close-popup @click="renameKey(prop.node)">
-                  <q-item-section>Rename</q-item-section>
+                  <q-item-section>{{
+                    $t("agents.registryManager.rename")
+                  }}</q-item-section>
                 </q-item>
                 <q-item clickable v-close-popup @click="deleteKey(prop.node)">
-                  <q-item-section>Delete</q-item-section>
+                  <q-item-section>{{
+                    $t("common.buttons.delete")
+                  }}</q-item-section>
                 </q-item>
               </q-list>
             </q-menu>
@@ -137,7 +145,9 @@
                   clickable
                   style="padding-right: 3px; padding-left: 12px"
                 >
-                  <q-item-section>New</q-item-section>
+                  <q-item-section>{{
+                    $t("agents.registryManager.new")
+                  }}</q-item-section>
                   <q-item-section side>
                     <q-icon name="chevron_right" />
                   </q-item-section>
@@ -174,7 +184,7 @@
               flat
               dense
               hide-pagination
-              no-data-label="No values found"
+              :no-data-label="$t('agents.registryManager.noValuesFound')"
               :loading="loading"
               :pagination="{ rowsPerPage: 0 }"
             >
@@ -219,21 +229,27 @@
                         v-close-popup
                         @click="openModifyDialog(props.row)"
                       >
-                        <q-item-section>Modify</q-item-section>
+                        <q-item-section>{{
+                          $t("agents.registryManager.modify")
+                        }}</q-item-section>
                       </q-item>
                       <q-item
                         clickable
                         v-close-popup
                         @click="renameValue(props.row)"
                       >
-                        <q-item-section>Rename</q-item-section>
+                        <q-item-section>{{
+                          $t("agents.registryManager.rename")
+                        }}</q-item-section>
                       </q-item>
                       <q-item
                         clickable
                         v-close-popup
                         @click="deleteValue(props.row)"
                       >
-                        <q-item-section>Delete</q-item-section>
+                        <q-item-section>{{
+                          $t("common.buttons.delete")
+                        }}</q-item-section>
                       </q-item>
                     </q-list>
                   </q-menu>
@@ -284,8 +300,8 @@
     <!-- Confirm Delete Key/Value Dialog -->
     <ConfirmDialog
       v-model="confirmDeleteKeyDialog"
-      title="Confirm Key Delete"
-      message="Are you sure you want to permanently delete this key and all of its subkeys?"
+      :title="$t('agents.registryManager.confirmKeyDelete')"
+      :message="$t('agents.registryManager.confirmKeyDeleteMessage')"
       @confirm="confirmDeleteKey"
       type="confirm"
       icon="warning"
@@ -293,8 +309,8 @@
     />
     <ConfirmDialog
       v-model="confirmDeleteValueDialog"
-      title="Confirm Value Delete"
-      message="Deleting certain registry values could cause system instability. Are you sure you want to permanently delete this value?"
+      :title="$t('agents.registryManager.confirmValueDelete')"
+      :message="$t('agents.registryManager.confirmValueDeleteMessage')"
       @confirm="confirmDeleteValue"
       type="confirm"
       icon="warning"
@@ -302,8 +318,8 @@
     />
     <ConfirmDialog
       v-model="warningDialog"
-      title="Selection Required"
-      message="Please select a hive or key before creating a new key."
+      :title="$t('agents.registryManager.selectionRequired')"
+      :message="$t('agents.registryManager.selectHiveOrKey')"
       :showConfirm="false"
       icon="warning"
       iconColor="orange"
@@ -320,6 +336,7 @@
 import { ref, onMounted, nextTick } from "vue";
 import { QInput, useQuasar } from "quasar";
 import { watch } from "vue";
+import { useI18n } from "vue-i18n";
 import { AxiosError } from "axios";
 import {
   registryTableColumns,
@@ -370,6 +387,7 @@ const isFinishingValueRename = ref(false);
 const modifyDialog = ref(false);
 const modifyRow = ref({} as RegistryValue);
 const $q = useQuasar();
+const { t } = useI18n();
 const nodePage = ref<Record<string, number>>({});
 const nodeHasMore = ref<Record<string, boolean>>({});
 const loadingMoreNodes = ref<Record<string, boolean>>({});
@@ -468,7 +486,7 @@ async function loadChildren({
       const placeholderId = makeLoadMoreId(node.id);
       children.push({
         id: placeholderId,
-        label: "Load More",
+        label: t("agents.registryManager.loadMore"),
         isLoadMore: true,
         lazy: false,
       } as RegistryNode);
@@ -547,7 +565,7 @@ async function loadMoreSubkeys(parent: RegistryNode) {
     if (nodeHasMore.value[parentId]) {
       parent.children.push({
         id: makeLoadMoreId(parentId),
-        label: "Load More",
+        label: t("agents.registryManager.loadMore"),
         isLoadMore: true,
         lazy: false,
       } as RegistryNode);
@@ -647,7 +665,7 @@ async function createKey(parentNode: RegistryNode) {
   const tempId = parentNode.id + "__temp_new_key__";
   const newNode: RegistryNode = {
     id: tempId,
-    label: "New_Key",
+    label: t("agents.registryManager.newKey"),
     lazy: false,
   };
   parentNode.children.unshift(newNode);
@@ -657,7 +675,7 @@ async function createKey(parentNode: RegistryNode) {
   selectedKey.value = parentNode.id;
   registryNodes.value = JSON.parse(JSON.stringify(registryNodes.value));
   await nextTick();
-  editLabel.value = "New_Key";
+  editLabel.value = t("agents.registryManager.newKey");
   editingNodeId.value = tempId;
   registryTree.value.setExpanded(parentNode.id, true);
 }
@@ -691,7 +709,7 @@ async function finishRename(
     return;
   }
   let newName = editLabel.value ? editLabel.value.trim() : "";
-  if (!newName) newName = "New_Key";
+  if (!newName) newName = t("agents.registryManager.newKey");
   const originalId = node.id;
   const parts = originalId.split("\\").filter(Boolean);
   const parentPath = parts.slice(0, -1).join("\\") + "\\";
@@ -856,7 +874,7 @@ function openModifyDialog(row: RegistryValue) {
   if (row.type === "REG_BINARY") {
     $q.notify({
       type: "warning",
-      message: "Modifying REG_BINARY values access denied.",
+      message: t("agents.registryManager.modifyRegBinaryDenied"),
       position: "top",
     });
     return;

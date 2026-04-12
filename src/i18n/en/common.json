@@ -32,9 +32,25 @@
     "submit": "Submit"
   },
   "system": {
+    "datetimeAt": "{date} at {time}",
     "no": "No",
     "notAvailable": "N/A",
+    "unassigned": "Unassigned",
     "unknown": "Unknown",
     "yes": "Yes"
+  },
+  "timeLapse": {
+    "secondsAgo": "{count} seconds ago",
+    "minutesAgo": "{count} minutes ago",
+    "hoursAgo": "{count} hours ago",
+    "daysAgo": "{count} days ago",
+    "monthsAgo": "{count} months ago",
+    "yearsAgo": "{count} years ago"
+  },
+  "messages": {
+    "copiedToClipboard": "Copied to clipboard"
+  },
+  "csv": {
+    "browserDeniedDownload": "Browser denied file download..."
   }
 }

@@ -292,7 +292,7 @@
 
 <script>
 import { openURL } from "quasar";
-import { setLocale, normalizeLocale } from "@/i18n";
+import { setLocale, normalizeLocale, locales } from "@/i18n";
 import { loadingBarColors } from "@/mixins/data";
 import mixins from "@/mixins/mixins";
 
@@ -374,16 +374,7 @@ export default {
           value: "mixed",
         },
       ],
-      localeOptions: [
-        {
-          label: this.$t("settings.userPreferences.languageOptions.english"),
-          value: "en",
-        },
-        {
-          label: this.$t("settings.userPreferences.languageOptions.russian"),
-          value: "ru",
-        },
-      ],
+      localeOptions: locales,
     };
   },
   watch: {

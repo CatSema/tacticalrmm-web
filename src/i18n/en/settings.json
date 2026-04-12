@@ -325,10 +325,6 @@
       "workstations": "Workstations",
       "mixed": "Mixed"
     },
-    "languageOptions": {
-      "english": "English",
-      "russian": "Russian"
-    },
     "notify": {
       "noUrlActions": "No URL Actions configured. Go to Settings > Global Settings > URL Actions",
       "selectUrlAction": "Select a URL Action",

@@ -11,6 +11,7 @@
 const { mergeConfig } = require("vite");
 const { configure } = require("quasar/wrappers");
 const path = require("path");
+const postcssNested = require("postcss-nested");
 require("dotenv").config();
 
 module.exports = configure(function (/* ctx */) {
@@ -82,14 +83,26 @@ module.exports = configure(function (/* ctx */) {
       /* eslint-disable quotes */
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       extendViteConf(viteConf, { isServer, isClient }) {
+        viteConf.css = mergeConfig(viteConf.css || {}, {
+          postcss: {
+            plugins: [postcssNested()],
+          },
+        });
+
         viteConf.build = mergeConfig(viteConf.build, {
-          chunkSizeWarningLimit: 1600,
+          chunkSizeWarningLimit: 4000,
           rollupOptions: {
             output: {
               entryFileNames: `[hash].js`,
               chunkFileNames: `[hash].js`,
               assetFileNames: `[hash].[ext]`,
             },
+          },
+        });
+
+        viteConf.esbuild = mergeConfig(viteConf.esbuild || {}, {
+          logOverride: {
+            "css-syntax-error": "silent",
           },
         });
       },

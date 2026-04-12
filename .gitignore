@@ -37,3 +37,6 @@ yarn-error.log*
 
 # TypeScript build info
 tsconfig.tsbuildinfo
+
+# Kilo local config
+.kilo/

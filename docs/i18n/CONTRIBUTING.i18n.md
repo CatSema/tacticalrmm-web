@@ -24,19 +24,19 @@ In a script / composable:
 
 ```ts
 // bad
-Notify.create({ message: "Agent deleted" })
+Notify.create({ message: "Agent deleted" });
 
 // good — via useI18n
-import { useI18n } from "vue-i18n"
-const { t } = useI18n()
-Notify.create({ message: t("agents.actions.deleted") })
+import { useI18n } from "vue-i18n";
+const { t } = useI18n();
+Notify.create({ message: t("agents.actions.deleted") });
 ```
 
 In boot files (no `setup` context):
 
 ```ts
-import { i18n } from "@/i18n"
-Notify.create({ message: i18n.global.t("common.saved") })
+import { i18n } from "@/i18n";
+Notify.create({ message: i18n.global.t("common.saved") });
 ```
 
 ### 2. Add the key to both `en` and `ru`
@@ -70,6 +70,7 @@ npm run i18n:check
 ```
 
 This verifies:
+
 - **Key parity** — every `en` key exists in `ru` and vice versa.
 - **Placeholder consistency** — `{var}`, `%s`, `%d` etc. match between locales.
 
@@ -85,29 +86,29 @@ i18n: localize <module> to ru and align key parity
 
 ## Key Naming Conventions
 
-| Pattern | Example |
-|---|---|
-| `module.section.action` | `agents.tabs.summary` |
-| Verbs for actions | `agents.actions.run` |
-| Nouns for titles | `agents.metaTitle` |
-| `shared.*` for reusable strings | `shared.areYouSure` |
+| Pattern                         | Example               |
+| ------------------------------- | --------------------- |
+| `module.section.action`         | `agents.tabs.summary` |
+| Verbs for actions               | `agents.actions.run`  |
+| Nouns for titles                | `agents.metaTitle`    |
+| `shared.*` for reusable strings | `shared.areYouSure`   |
 
 ## Locale Namespaces (Domains)
 
-| File | Area |
-|---|---|
-| `agents.json` | Agents, remote background, file browser, services |
-| `alerts.json` | Alerts, alert templates |
-| `auth.json` | Authentication, SSO |
-| `checks.json` | Monitoring checks |
-| `common.json` | Shared strings, buttons, statuses |
-| `dashboard.json` | Dashboard |
-| `navigation.json` | Navigation menu, routes |
-| `reporting.json` | Reports (EE) |
-| `scripts.json` | Scripts, snippets |
-| `settings.json` | Server and core settings |
-| `software.json` | Software install/uninstall |
-| `tasks.json` | Automated tasks |
+| File              | Area                                              |
+| ----------------- | ------------------------------------------------- |
+| `agents.json`     | Agents, remote background, file browser, services |
+| `alerts.json`     | Alerts, alert templates                           |
+| `auth.json`       | Authentication, SSO                               |
+| `checks.json`     | Monitoring checks                                 |
+| `common.json`     | Shared strings, buttons, statuses                 |
+| `dashboard.json`  | Dashboard                                         |
+| `navigation.json` | Navigation menu, routes                           |
+| `reporting.json`  | Reports (EE)                                      |
+| `scripts.json`    | Scripts, snippets                                 |
+| `settings.json`   | Server and core settings                          |
+| `software.json`   | Software install/uninstall                        |
+| `tasks.json`      | Automated tasks                                   |
 
 ---
 
@@ -115,10 +116,10 @@ i18n: localize <module> to ru and align key parity
 
 Preserve placeholders **exactly as they appear** in the English source:
 
-| Type | Examples |
-|---|---|
+| Type           | Examples                   |
+| -------------- | -------------------------- |
 | ICU / vue-i18n | `{name}`, `{count}`, `{n}` |
-| printf | `%s`, `%d`, `%f` |
+| printf         | `%s`, `%d`, `%f`           |
 
 ```json
 // en
@@ -187,24 +188,24 @@ For Russian, use 4 forms (0, 1, 2-4, 5+):
 
 Use consistent terminology across all modules.
 
-| English Term | Russian Translation | Note |
-|---|---|---|
-| Agent | Агент | Not "клиент" |
-| Client | Клиент | Organization/customer |
-| Site | Сайт | Client location |
-| Check | Проверка | Monitoring check |
-| Alert | Оповещение | Not "тревога" |
-| Policy | Политика | Set of rules |
-| Task | Задача | Scheduled or manual action |
-| Script | Скрипт | Not "сценарий" in UI |
-| Dashboard | Панель мониторинга | Short: "Панель" if space is limited |
-| Service | Служба | Windows service |
-| Event Log | Журнал событий | |
-| Run | Запустить | For action buttons |
-| Retry | Повторить | |
-| Success | Успешно | Execution status |
-| Failed | Ошибка | For status/notification |
-| Pending | В ожидании | |
+| English Term | Russian Translation | Note                                |
+| ------------ | ------------------- | ----------------------------------- |
+| Agent        | Агент               | Not "клиент"                        |
+| Client       | Клиент              | Organization/customer               |
+| Site         | Сайт                | Client location                     |
+| Check        | Проверка            | Monitoring check                    |
+| Alert        | Оповещение          | Not "тревога"                       |
+| Policy       | Политика            | Set of rules                        |
+| Task         | Задача              | Scheduled or manual action          |
+| Script       | Скрипт              | Not "сценарий" in UI                |
+| Dashboard    | Панель мониторинга  | Short: "Панель" if space is limited |
+| Service      | Служба              | Windows service                     |
+| Event Log    | Журнал событий      |                                     |
+| Run          | Запустить           | For action buttons                  |
+| Retry        | Повторить           |                                     |
+| Success      | Успешно             | Execution status                    |
+| Failed       | Ошибка              | For status/notification             |
+| Pending      | В ожидании          |                                     |
 
 ---
 
@@ -233,11 +234,11 @@ If any check fails, the merge is blocked.
 
 ## Available npm Scripts
 
-| Script | Purpose |
-|---|---|
-| `npm run i18n:check` | Run all i18n integrity checks |
-| `npm run i18n:parity` | Check key parity between `en` and `ru` |
-| `npm run i18n:placeholders` | Check placeholder consistency |
+| Script                      | Purpose                                |
+| --------------------------- | -------------------------------------- |
+| `npm run i18n:check`        | Run all i18n integrity checks          |
+| `npm run i18n:parity`       | Check key parity between `en` and `ru` |
+| `npm run i18n:placeholders` | Check placeholder consistency          |
 
 ---
 
@@ -280,7 +281,7 @@ const localeNames: Record<string, string> = {
   en: "English",
   it: "Italiano",
   ru: "Русский",
-  de: "Deutsch",  // ← add here
+  de: "Deutsch", // ← add here
 };
 ```
 

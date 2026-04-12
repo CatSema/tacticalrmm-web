@@ -7,7 +7,10 @@
     "serve": "quasar dev",
     "build": "quasar build",
     "lint": "eslint --ext .js,.ts,.vue ./",
-    "format": "prettier --write \"**/*.{js,ts,vue,,html,md,json}\" --ignore-path .gitignore"
+    "format": "prettier --write \"**/*.{js,ts,vue,,html,md,json}\" --ignore-path .gitignore",
+    "i18n:check": "node scripts/i18n-check.mjs",
+    "i18n:parity": "node scripts/i18n-check.mjs --parity",
+    "i18n:placeholders": "node scripts/i18n-check.mjs --placeholders"
   },
   "dependencies": {
     "@quasar/extras": "1.16.17",
